@@ -18,7 +18,7 @@
   font-family: lato;
   color: #fff;
   background-color: #333;
-  height: 100%;
+  height: 800px;
   width: 100%;
   background-repeat: no-repeat;
 }
