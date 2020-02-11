@@ -29,6 +29,7 @@
             <div class="col-md-6" style="background-image: url(https://source.unsplash.com/user/a_myth); background-size: cover; background-position: center center; opacity: 1; min-height:300px;">
             </div>
             <div class="col-md-6 align-self-center p-4 ">
+              
                 <h3 class="font-weight-light text-success">{{ $show->title }} <h6 class="text-muted">by {{$show->user->name}} {{ $show->created_at->diffForHumans() }}</h6></h3>
                 <p>{{ $show->description }}</p>
                 <p>Ticket: &#8358;{{$show->price}}</p>
@@ -54,8 +55,11 @@
         </div>
 
         @endforelse
+        {!! $shows->links() !!}
     </div>
 </section>
+
+
 
 
 

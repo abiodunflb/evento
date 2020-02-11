@@ -23,6 +23,7 @@
                 <h3 class="font-weight-light text-success">{{ $show->title }} <h6 class="text-muted">by {{$show->user->name}} {{ $show->created_at->diffForHumans() }}</h6></h3>
                 <p>{{ $show->description }}</p>
                 <p>Venue: {{$show->venue}}</p>
+                <p>Date: {{$show->date}}</p>
                 <p>Ticket: &#8358;{{$show->price}}</p>
 
                 @auth
