@@ -6,18 +6,14 @@
 <div class="container">
 
 <div align="right">
-      @auth
+      
     <a href="{{ route('shows.create')}}" class="btn btn-outline-success btn-sm"><span class="fa fa-plus-circle"> Create Event</span></a>
-      @endauth
+      
 
       
     </div>
 
-    @guest
-      <div class="alert alert-danger">
-        <h6>Please login to create events</h6>
-      </div>
-      @endguest
+    
 
 
 <div class="row my-5 border bg-light shadow">
