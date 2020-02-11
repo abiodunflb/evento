@@ -62,11 +62,12 @@ hr{
     <div class="col-lg-12">
       <div id="landing">
         <h1>EVENTO</h1>
-        <h3 class="text-success">EVENT PDF TICKET GENERATOR</h3>
+        <h3 class="text-success">EVENT PDF TICKET GENERATOR WITH LARAVEL 6</h3>
         <small>By Afolabi Abiodun</small>
         <hr class="hr">
         <!-- <button type="button" class="btn btn-outline-secondary"><i class="fas fa-paw"></i>View Events</button> -->
         <a href="{{route('shows.index')}}" class="btn btn-success">View Events</a>
+        <a href="{{route('shows.create')}}" class="btn btn-success">Create Event</a>
       </div>
     </div>
   </div>
