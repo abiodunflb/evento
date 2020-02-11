@@ -17,18 +17,13 @@
         @endif
     
     <div align="right">
-      @auth
-    <a href="{{ route('shows.create')}}" class="btn btn-outline-success btn-sm"><span class="fa fa-plus-circle"> Create Event</span></a>
-      @endauth
-
-      
+      <a href="{{ route('shows.create')}}" class="btn btn-outline-success btn-sm"><span class="fa fa-plus-circle"> Create Event</span></a>
     </div>
 
-    @guest
-      <div class="alert alert-danger">
-        <h6>Please login to create events</h6>
-      </div>
-      @endguest
+    @auth
+    <h3>Welcome, {{ Auth::user()->name }}</h3>
+    @endauth
+    
     @forelse($shows as $show)
         <div class="row my-5 border bg-light shadow">
             <div class="col-md-6" style="background-image: url(https://source.unsplash.com/user/a_myth); background-size: cover; background-position: center center; opacity: 1; min-height:300px;">
@@ -62,6 +57,6 @@
     </div>
 </section>
 
-@include ('layouts.footer')
+
 
 @endsection

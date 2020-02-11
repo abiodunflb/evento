@@ -28,15 +28,22 @@
                 <p>{{ $show->description }}</p>
                 <p>Venue: {{$show->venue}}</p>
                 <p>Ticket: &#8358;{{$show->price}}</p>
+
+                @auth
+                @if(Auth::user()->id == $show->user_id)
                 
                 <form action="{{ route('shows.destroy', $show->id)}}" method="POST" >
                 <a href="{{ route('shows.edit', $show->id)}}" class="btn btn-outline-success btn-sm"> <span class="fa fa-pencil"> Edit</span></a>
-                <a href="{{ action('ShowController@downloadPDF', $show->id)}}" class="btn btn-outline-info btn-sm"> <span class="fa fa-download"> Download ticket(pdf)</span></a>
+                
 
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-outline-danger btn-sm"><span class="fa fa-trash"> Delete</span></button>
+                @endif
+                @endauth
+                <a href="{{ action('ShowController@downloadPDF', $show->id)}}" class="btn btn-outline-info btn-sm"> <span class="fa fa-download"> Download ticket(pdf)</span></a>
                 </form>
+                
                 
                 
                 

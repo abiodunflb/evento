@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>EVENTO</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -20,6 +20,7 @@
   background-color: #333;
   height: 100%;
   width: 100%;
+  background-repeat: no-repeat;
 }
 
 /* Content */
@@ -61,7 +62,8 @@ hr{
     <div class="col-lg-12">
       <div id="landing">
         <h1>EVENTO</h1>
-        <h3>Event PDF TICKET GENERATOR</h3>
+        <h3>EVENT PDF TICKET GENERATOR</h3>
+        <small>By Afolabi Abiodun</small>
         <hr class="hr">
         <!-- <button type="button" class="btn btn-outline-secondary"><i class="fas fa-paw"></i>View Events</button> -->
         <a href="{{route('shows.index')}}" class="btn btn-success">View Events</a>
