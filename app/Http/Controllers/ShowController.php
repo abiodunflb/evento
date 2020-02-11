@@ -32,7 +32,10 @@ class ShowController extends Controller
      */
     public function create()
     {
-        return view('shows.create');
+            
+            return view('shows.create');
+        
+        
     }
 
     /**
@@ -93,6 +96,9 @@ class ShowController extends Controller
     public function edit($id)
     {
         $show = Show::findOrFail($id);
+        if(auth()->user()->id !== $show->user_id){
+            return redirect('shows')->with('error', 'Unauthorized Page');
+        }
         return view('shows.edit', compact('show'));
     }
 
@@ -137,6 +143,10 @@ class ShowController extends Controller
     public function destroy($id)
     {
         $show = Show::findOrFail($id);
+        if(auth()->user()->id !== $show->user_id){
+            return redirect('shows')->with('error', 'Unauthorized Page');
+        }
+    
 
         $show->delete();
 
