@@ -10,9 +10,9 @@ use PDF;
 class ShowController extends Controller
 {
 
-    public function __construct(){
-        $this->middleware('auth', ['except' => ['index', 'show', 'downloadPDF']]);
-    }
+    // public function __construct(){
+    //     $this->middleware('auth', ['except' => ['index', 'show', 'downloadPDF']]);
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +20,7 @@ class ShowController extends Controller
      */
     public function index()
     {
-        $shows = Show::latest()->paginate(5);
+        $shows = Show::latest()->paginate(3);
 
         return view('shows.index', compact('shows'));
     }
@@ -92,7 +92,8 @@ class ShowController extends Controller
      */
     public function edit($id)
     {
-        //
+        $show = Show::findOrFail($id);
+        return view('shows.edit', compact('show'));
     }
 
     /**
@@ -104,7 +105,27 @@ class ShowController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'venue' => 'required',
+            'date' => 'required'
+        ]);
+
+        $user_id = Auth::user()->id;
+        $show = Show::findOrFail($id);
+
+        $show->update([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+            'venue' => $request['venue'],
+            'date' => $request['date'],
+            'user_id' => $user_id
+        ]);
+
+        return redirect('shows')->with('success', 'Show Updated Successfully');
     }
 
     /**
@@ -115,7 +136,11 @@ class ShowController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $show = Show::findOrFail($id);
+
+        $show->delete();
+
+        return redirect('shows')->with('success', 'show deleted successfully');
     }
 
     

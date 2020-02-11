@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-    <div class="container">
+    <div class="container mb-5">
 
     @if(session()->get('success'))
             <div class="alert alert-success">
@@ -38,7 +38,7 @@
                 <p>{{ $show->description }}</p>
                 <p>Ticket: &#8358;{{$show->price}}</p>
                 <a href="{{ route('shows.show', $show->id)}}" class="btn btn-outline-success btn-sm"> <span class="fa fa-eye"> View</span></a>
-                <a href="{{ action('ShowController@downloadPDF', $show->id)}}" class="btn btn-outline-danger btn-sm"> <span class="fa fa-eye"> Download ticket(pdf)</span></a>
+                <a href="{{ action('ShowController@downloadPDF', $show->id)}}" class="btn btn-outline-danger btn-sm"> <span class="fa fa-download"> Download ticket(pdf)</span></a>
             </div>
         </div>
 
@@ -61,5 +61,7 @@
         @endforelse
     </div>
 </section>
+
+@include ('layouts.footer')
 
 @endsection

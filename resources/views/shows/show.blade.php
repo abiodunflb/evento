@@ -5,6 +5,20 @@
 <!-- Page Content -->
 <div class="container">
 
+<div align="right">
+      @auth
+    <a href="{{ route('shows.create')}}" class="btn btn-outline-success btn-sm"><span class="fa fa-plus-circle"> Create Event</span></a>
+      @endauth
+
+      
+    </div>
+
+    @guest
+      <div class="alert alert-danger">
+        <h6>Please login to create events</h6>
+      </div>
+      @endguest
+
 
 <div class="row my-5 border bg-light shadow">
             <div class="col-md-12" style="background-image: url(https://source.unsplash.com/user/a_myth); background-size: cover; background-position: center center; opacity: 1; min-height:300px;">
@@ -14,15 +28,24 @@
                 <p>{{ $show->description }}</p>
                 <p>Venue: {{$show->venue}}</p>
                 <p>Ticket: &#8358;{{$show->price}}</p>
-                <a href="{{ route('shows.show', $show->id)}}" class="btn btn-outline-success btn-sm"> <span class="fa fa-eye"> Edit</span></a>
-                <a href="{{ route('shows.show', $show->id)}}" class="btn btn-outline-success btn-sm"> <span class="fa fa-eye"> Delete</span></a>
-                <a href="#" class="btn btn-outline-success btn-sm"> <span class="fa fa-eye"> Download ticket(pdf)</span></a>
+                
+                <form action="{{ route('shows.destroy', $show->id)}}" method="POST" >
+                <a href="{{ route('shows.edit', $show->id)}}" class="btn btn-outline-success btn-sm"> <span class="fa fa-pencil"> Edit</span></a>
+                <a href="{{ action('ShowController@downloadPDF', $show->id)}}" class="btn btn-outline-info btn-sm"> <span class="fa fa-download"> Download ticket(pdf)</span></a>
+
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger btn-sm"><span class="fa fa-trash"> Delete</span></button>
+                </form>
+                
+                
+                
                 
             </div>
         </div>
 </div>
 <!-- /.container -->
 
-
+@include ('layouts.footer')
 
 @endsection
